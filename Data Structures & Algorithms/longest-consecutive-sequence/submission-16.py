@@ -1,0 +1,17 @@
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        # Brute Force -> sorting and keeping track of the biggest sequence
+        # Using set to check on O(1) if n is the first on the sequence 
+        s = set(nums)
+
+        res = 0
+        for num in nums:
+            if num - 1 in s:
+                continue
+            
+            count = 1
+            while num + count in s:
+                count += 1
+            res = max(count, res)
+
+        return res
